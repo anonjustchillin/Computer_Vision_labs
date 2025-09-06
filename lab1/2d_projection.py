@@ -70,14 +70,14 @@ p = np.array([
 ])
 
 moving = np.array([
-    [1, 0, r],
-    [0, 1, -r],
+    [1, 0, 10],
+    [0, 1, -10],
     [0, 0, 1],
 ])
 
 stop = int(width/r)
 for i in range(stop):
-    time.sleep(0.3)
+    time.sleep(0.1)
 
     hexagon.setOutline("white")
 
@@ -116,7 +116,7 @@ rotating = np.array([
 
 stop = int(width/r)
 for i in range(stop):
-    time.sleep(0.3)
+    time.sleep(0.1)
     hexagon.setOutline("white")
 
     p, new_points = action(p, rotating)
@@ -153,7 +153,7 @@ scaling = np.array([
 
 #stop = int(width/r)
 for i in range(6):
-    time.sleep(0.3)
+    time.sleep(0.1)
     hexagon.setOutline("white")
 
     p, new_points = action(p, scaling)
@@ -167,31 +167,31 @@ win.close()
 
 
 # Все разом
-#win = setWindow(width, height, "white", "Шестикутник")
-#hexagon = Polygon(points)
-#hexagon.draw(win)
-#
-#p = np.array([
-#    [x1, y1, 1],
-#    [x2, y2, 1],
-#    [x3, y3, 1],
-#    [x4, y4, 1],
-#    [x5, y5, 1],
-#    [x6, y6, 1]
-#])
-#
-#stop = int(width/r)
-#for i in range(stop):
-#    time.sleep(0.3)
-#    #hexagon.setOutline("white")
-#
-#    p, _ = action(p, moving)
-#    p, new_points = action(p, rotating)
-#    #p, new_points = action(p, scaling)
-#
-#    hexagon = Polygon(*new_points)
-#    hexagon.draw(win)
-#
-#print('Закінчено')
-#win.getMouse()
-#win.close()
+win = setWindow(width, height, "white", "Шестикутник")
+hexagon = Polygon(points)
+hexagon.draw(win)
+
+p = np.array([
+    [x1, y1, 1],
+    [x2, y2, 1],
+    [x3, y3, 1],
+    [x4, y4, 1],
+    [x5, y5, 1],
+    [x6, y6, 1]
+])
+
+stop = int(width/r)
+for i in range(stop):
+    time.sleep(0.1)
+    hexagon.setOutline("white")
+
+    p, _ = action(p, moving)
+    p, new_points = action(p, rotating)
+    #p, new_points = action(p, scaling)
+
+    hexagon = Polygon(*new_points)
+    hexagon.draw(win)
+
+print('Закінчено')
+win.getMouse()
+win.close()
