@@ -9,7 +9,7 @@ col_index = 0
 def setWindow(w, h, color, title):
     win = GraphWin(title, w, h)
     win.setBackground(color)
-    #win.setCoords(-300, -300, 300, 300)
+    # win.setCoords(-300, -300, 300, 300)
     return win
 
 
@@ -218,9 +218,10 @@ print()
 
 # Обертання
 win = setWindow(width, height, "white", "Паралелепіпед")
+win.setCoords(-300, -300, 300, 300)
 
 obj2 = obj.copy()
-obj2 = moveXYZ(obj2, l, m, n, 1)
+# obj2 = moveXYZ(obj2, l, m, n, 1)
 
 deg = 10
 cycles = int(360/np.abs(deg))*5
