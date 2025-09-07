@@ -143,16 +143,16 @@ p = np.array([
     [x6, y6, 1]
 ])
 
-size = 0.1
+size = 1.09
 
 scaling = np.array([
-    [r*size, 0, 0],
-    [0, r*size, 0],
+    [size, 0, 0],
+    [0, size, 0],
     [0, 0, 1],
 ])
 
-#stop = int(width/r)
-for i in range(6):
+stop = int(width/r)*2
+for i in range(stop):
     time.sleep(0.1)
     hexagon.setOutline("white")
 
