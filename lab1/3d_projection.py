@@ -13,11 +13,11 @@ def setWindow(w, h, color, title):
     return win
 
 
-def moveXYZ(object, l, m, n, o):
+def moveXYZ(object, l, m, n, x=1, y=1, z=1):
     moving = np.array([
-        [1, 0, 0, l],
-        [0, 1, 0, m],
-        [0, 0, o, n],
+        [x, 0, 0, l],
+        [0, y, 0, m],
+        [0, 0, z, n],
         [0, 0, 0, 1]
     ])
 
@@ -130,7 +130,7 @@ print()
 
 ## Паралелепіпед в центрі
 win = setWindow(width, height, "white", "Паралелепіпед")
-moved_obj = moveXYZ(obj, l, m, n, 0)
+moved_obj = moveXYZ(obj, l, m, n)
 print('Паралелепіпед в центрі')
 print(moved_obj)
 showObject(moved_obj, "black")
@@ -146,7 +146,7 @@ win = setWindow(width, height, "white", "Паралелепіпед")
 rotatedX = rotateX(obj, 45)
 print('Ротація по x')
 print(rotatedX)
-rotatedX = moveXYZ(rotatedX, l, m, n, 0)
+rotatedX = moveXYZ(rotatedX, l, m, n, 1, 1, 0)
 print('Переміщення в центр')
 print(rotatedX)
 
@@ -163,7 +163,7 @@ win = setWindow(width, height, "white", "Паралелепіпед")
 rotatedY = rotateY(obj, 45)
 print('Ротація по y')
 print(rotatedY)
-rotatedY = moveXYZ(rotatedY, l, m, n, 0)
+rotatedY = moveXYZ(rotatedY, l, m, n, 1, 1, 0)
 print('Переміщення в центр')
 print(rotatedY)
 
@@ -180,7 +180,7 @@ win = setWindow(width, height, "white", "Паралелепіпед")
 rotatedZ = rotateZ(obj, 120)
 print('Ротація по z')
 print(rotatedZ)
-rotatedZ = moveXYZ(rotatedZ, l, m, n, 0)
+rotatedZ = moveXYZ(rotatedZ, l, m, n, 1, 1, 0)
 print('Переміщення в центр')
 print(rotatedZ)
 
@@ -204,7 +204,7 @@ rotated = rotateZ(rotated, 45)
 print('Ротація по z')
 print(rotated)
 
-rotated = moveXYZ(rotated, l, m, n, 0)
+rotated = moveXYZ(rotated, l, m, n, 1, 1, 0)
 
 print('Переміщення в центр')
 print(rotated)
@@ -221,7 +221,6 @@ win = setWindow(width, height, "white", "Паралелепіпед")
 win.setCoords(-300, -300, 300, 300)
 
 obj2 = obj.copy()
-# obj2 = moveXYZ(obj2, l, m, n, 1)
 
 deg = 10
 cycles = int(360/np.abs(deg))*5
