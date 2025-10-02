@@ -86,11 +86,10 @@ def remove_roads(img, total, x1, x2, y1, y2):
     _, binary_roads = cv2.threshold(roads_blurred[y1:y2, x1:x2], 50, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     masked_roads = np.zeros_like(total)
     masked_roads[y1:y2, x1:x2] = binary_roads
-    show_img(masked_roads, "Застосування сегментації Отцу (маска доріг)")
+    show_img(masked_roads, "Застосування сегментації Оцу (маска доріг)")
 
     total = cv2.subtract(total, masked_roads)
     return total
-
 
 
 def image_recognition(cnts, min_area):
@@ -128,7 +127,7 @@ def process_image(img, site, k, rect_w, rect_h, x, y, gamma, min_area, red_defin
     show_img(corrected, "Гамма корекція")
 
     _, binary = cv2.threshold(corrected, 100, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    show_img(binary, "Застосування сегментації Отцу")
+    show_img(binary, "Застосування сегментації Оцу")
 
     # обробки маски з головним корпусом КПІ
     h, w = img.shape[:2]
@@ -169,7 +168,7 @@ def process_image(img, site, k, rect_w, rect_h, x, y, gamma, min_area, red_defin
     _, binary_masked = cv2.threshold(masked_blurred2[y1:y2, x1:x2], 220, 255, cv2.THRESH_BINARY)
     masked_res = np.zeros_like(binary)
     masked_res[y1:y2, x1:x2] = binary_masked
-    show_img(masked_res, "Застосування сегментації Отцу (маска)")
+    show_img(masked_res, "Застосування сегментації")
 
     # загальне
     total = cv2.bitwise_or(binary, masked_res)
