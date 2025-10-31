@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 import matplotlib.pyplot as plt
 from detection import (harris_corners,
                             sift_detector,
@@ -15,9 +14,6 @@ def show_img(img, title):
     plt.axis('off')
     plt.title(title)
     plt.show()
-
-# blurred = cv2.GaussianBlur(gray, (9, 9), 2)
-# show_img(blurred, "Застосування Гаусівського розмиття")
 
 ## Atlas image processing and building detection
 img_atlas = cv2.imread(file_atlas)
@@ -56,15 +52,31 @@ show_img(img_bing, "Shi Tomasi corners (Bing)")
 img_atlas = cv2.imread(file_atlas)
 img_bing = cv2.imread(file_bing)
 
-show_img(img_atlas, "Фото з сайту livingatlas2")
-show_img(img_bing, "Фото з сайту Bing")
 
-harris_compared = harris_compare(img_atlas, img_bing)
-show_img(harris_compared, "Harris corners feature comparison")
+def equalize_hist(img):
+    B, G, R = cv2.split(img)
 
-sift_compared = sift_compare(img_atlas, img_bing)
-show_img(sift_compared, "SIFT feature comparison")
+    eq_B = cv2.equalizeHist(B)
+    eq_G = cv2.equalizeHist(G)
+    eq_R = cv2.equalizeHist(R)
 
-st_compared = shi_tomasi_compare(img_atlas, img_bing)
-show_img(st_compared, "Shi Tomasi corners feature comparison")
+    img_eq = cv2.merge((eq_B, eq_G, eq_R))
+
+    blurred = cv2.GaussianBlur(img_eq, (3, 3), 0)
+
+    return blurred
+
+
+proc_atlas = equalize_hist(img_atlas)
+proc_bing = equalize_hist(img_bing)
+
+
+show_img(proc_atlas, "Фото з сайту livingatlas2")
+show_img(proc_bing, "Фото з сайту Bing")
+
+harris_compare(proc_atlas, proc_bing)
+
+sift_compare(proc_atlas, proc_bing)
+
+shi_tomasi_compare(proc_atlas, proc_bing)
 
