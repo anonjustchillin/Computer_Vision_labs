@@ -1,7 +1,7 @@
 import cv2
-from lab4.meanshift import meanShift
-from lab4.camshift import camShift
-from lab4.kcf import kcf
+from meanshift import meanShift
+from camshift import camShift
+from kcf import kcf
 
 filename = './crowd.mp4'
 #filename = './cup.mp4'

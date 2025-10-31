@@ -1,6 +1,7 @@
 import cv2
+import numpy as np
 import matplotlib.pyplot as plt
-from lab4.detection import (harris_corners,
+from detection import (harris_corners,
                             sift_detector,
                             shi_tomasi_detector,
                             sift_compare, harris_compare, shi_tomasi_compare)
@@ -8,7 +9,6 @@ from lab4.detection import (harris_corners,
 
 file_bing = './bing_img.png'
 file_atlas = './atlas_img.png'
-
 
 def show_img(img, title):
     plt.imshow(img)
