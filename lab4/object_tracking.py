@@ -4,6 +4,7 @@ from lab4.camshift import camShift
 from lab4.kcf import kcf
 
 filename = './crowd.mp4'
+#filename = './cup.mp4'
 filesize = (1920,1080)
 cap = cv2.VideoCapture(filename)
 
@@ -14,16 +15,16 @@ print('3 - KCF')
 
 print()
 
-x = int(input('Method: '))
+x = input('Method: ')
 
 match x:
-    case 1:
+    case "1":
         print('1 - MeanShift')
         meanShift(cap)
-    case 2:
+    case "2":
         print('2 - CamShift')
         camShift(cap)
-    case 3:
+    case "3":
         print('3 - KCF')
         kcf(cap)
     case _:
