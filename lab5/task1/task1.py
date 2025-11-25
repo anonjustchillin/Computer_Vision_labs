@@ -1,9 +1,8 @@
-import cv2
-from lab5.cluster_image import process_image
-from lab5.img_operations import *
+from cluster_image import process_image
+from img_operations import *
 
-file_bing = './bing_img.png'
-file_atlas = './atlas_img.png'
+file_bing = 'bing_img.png'
+file_atlas = 'atlas_img.png'
 
 
 ## Atlas image processing and building detection
