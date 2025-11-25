@@ -183,7 +183,7 @@ def process_image(img, site):
         tree_area = 50
 
 
-    #buildings = find_buildings(img, k, rect_w, rect_h, x, y, gamma, min_area, red_definition, subtract_kpi_roads)
+    buildings = find_buildings(img, k, rect_w, rect_h, x, y, gamma, min_area, red_definition, subtract_kpi_roads)
     trees = find_trees(img, tree_k, tree_gamma, tree_area, tree_thresh, red_definition)
 
     img1 = img.copy()
@@ -192,7 +192,7 @@ def process_image(img, site):
     cv2.drawContours(img1, trees, -1, (0, 0, 255), 2)
     show_img(img1, f"Фото {site} з контурами зелених зон")
 
-    #cv2.drawContours(img2, buildings, -1, (255, 0, 0), 2)
-    #show_img(img2, f"Фото {site} з контурами будівель")
+    cv2.drawContours(img2, buildings, -1, (255, 0, 0), 2)
+    show_img(img2, f"Фото {site} з контурами будівель")
 
     return
